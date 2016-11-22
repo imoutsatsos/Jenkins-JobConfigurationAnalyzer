@@ -23,8 +23,8 @@ In addition, longitudinal builds of a project can be used as an annotated log/ar
 Since **the configuration file of the target project is archived**, it can be used to compare or even revert back to a particular version during development by simply re-deploying it to the project folder on the server.
 
 ## Build Form
-An example build form is shown below. Note that if the selected project has been the target of a previous list it is listed in the PROJECT_HISTORY list.
-The user can easily follow the links to review a previous configuration reports.
+An example build form is shown below. Note that if the selected PROJECT_NAME (project) has been analyzed previously, those builds are listed in the PROJECT_HISTORY list.
+The user can easily follow the links to review previous configuration analyses reports.
 ![Build Form](./userContent/assets/images/BuildForm.png?raw=true "Build Form")
 
 ## Console Report
