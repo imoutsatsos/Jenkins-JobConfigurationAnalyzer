@@ -58,6 +58,7 @@ It is possible that jobs using configuration components and build steps beyond t
 We are using this utility primarily with freestyle projects that contain complex interacting parameters. 
 
 Pipeline, multi-configuration and multi-job projects have not been tested.
+The [Cloudbees Folder Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Folders+Plugin) is currently not supported. If your projects are organized using the Cloudbees Folder Plugin Jenkins-JobConfiguration Analyzer is not able to find the project configuration files.
 If you would like to extend the parser, it should be possible to modify the code in [jobConfigParser](./scriptler/scripts/jobConfigParser.groovy) to detect new parameters types and build steps (and these will always be reported in the console).
 
 
