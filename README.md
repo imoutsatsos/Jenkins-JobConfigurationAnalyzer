@@ -6,10 +6,10 @@ The configuration complexity of Jenkins freestyle jobs has increased, especially
 behavior (using the [Active Choices](https://wiki.jenkins-ci.org/display/JENKINS/Active+Choices+Plugin) and other similar Jenkins plugins).
 There is a need for a quick and concise way to review and access project parameters, builders, publishers, and Groovy code and plugin dependencies.
 
-##What can JENKINS_JOB_ANALYZER do?
-This utility job allows you to select one of the jobs on your Jenkins server, analyze its configuration, and **create a concise report of the job's main elements** (parameters, scm, builders, publishers, build-wrappers) as well as the Groovy code, scripts and plugin dependencies.
+##What can JOB_CONFIG_ANALYZER do?
+This utility Jenkins job allows you to select one of the jobs on your Jenkins server, analyze its configuration, and **create a concise report of the job's main elements** (parameters, scm, builders, publishers, build-wrappers) as well as the Groovy code, scripts and plugin dependencies.
 
-By examining a JENKINS_JOB_ANALYZER build report you can immediately **visualize and access the target project's**:
+By examining a JOB_CONFIG_ANALYZER build report you can immediately **visualize and access the target project's**:
 
 1. parameters
 2. SCM
