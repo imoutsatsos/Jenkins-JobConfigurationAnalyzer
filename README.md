@@ -50,9 +50,12 @@ Each build generates a number of archived artifacts as shown in the example belo
 Archived artifacts include:
 
 1. the `config.xml` file of the analyzed project
-2. text files corresponding to each project component using an embedded script (Groovy, scriptlet, command)
+2. text files corresponding to embedded scripts (Groovy or command line script) in each of the project component
 
-Script code is identified by a *prefix indicating the component type* where the script originated (parameter, builder, publisher etc.) and it's *serial ID* (the sequence number by which the component is ordered in the configuration files)
+The text scripts follow a naming convention `TYPE_SerialID_[parameterName||null]_script.txt` where file names use a *prefix indicating the component type where the script originated* (parameter, builder, publisher etc.) and it's *serial ID* (the sequence number by which the component is ordered in the configuration file). If the component is a parameter, the *parameter name is also included in the prefix*.
+
+So, an embedded script used in the 10th job parameter named BUILD_LABEL it is identified by a name like: `parameter_10_BUILD_LABEL_script.txt`
+
 ##Limitations
 It is possible that jobs using configuration components and build steps beyond the ones we have tested may not parse correctly.
 We are using this utility primarily with freestyle projects that contain complex interacting parameters. 
