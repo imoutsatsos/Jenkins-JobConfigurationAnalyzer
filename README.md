@@ -7,7 +7,7 @@ behavior (using the [Active Choices](https://wiki.jenkins-ci.org/display/JENKINS
 There is a need for a quick and concise way to review and access project parameters, builders, publishers, and Groovy code and plugin dependencies.
 
 ##What can JENKINS_JOB_ANALYZER do?
-This utility job allows you to select one of the jobs on your Jenkins server, analyze its configuration, and **create a concise report of the job's main elements** (properties, scm, builders, publishers, build-wrappers) as well various Groovy code and plugin dependencies.
+This utility job allows you to select one of the jobs on your Jenkins server, analyze its configuration, and **create a concise report of the job's main elements** (parameters, scm, builders, publishers, build-wrappers) as well as the Groovy code, scripts and plugin dependencies.
 
 By examining a JENKINS_JOB_ANALYZER build report you can immediately **visualize and access the target project's**:
 
@@ -19,8 +19,8 @@ By examining a JENKINS_JOB_ANALYZER build report you can immediately **visualize
 6. plugins used 
 7. order and sequence of these components
 
-In addition, longitudinal builds of a project can be used as an annotated log/archive of the job's configuration evolution. 
-Since **the configuration file of the target project is archived**, it can be used to compare or even revert back to a particular version during development by simply re-deploying it to the project folder on the server.
+In addition, longitudinal builds of a project can be used as an annotated log/archive of the job's configuration changes. 
+Since **the configuration file of the analyzed project/job is archived**, it can be used to compare or even revert back to a particular configuration version by simply re-deploying it to the project folder on the server.
 
 ## Build Form
 An example build form is shown below. Note that if the selected PROJECT_NAME (project) has been analyzed previously, those builds are listed in the PROJECT_HISTORY list.
@@ -29,7 +29,7 @@ The user can easily follow the links to review previous configuration analyses r
 
 ## Console Report
 The build console output is organized using the [Collapsing Console Sections Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Collapsing+Console+Sections+Plugin). 
-The console report gives another (perhaps slightly more detailed) view of the project configuration. Each section can be collapsed and expanded for easier inspection of the project components.
+The console report displays a more detailed, textual view of the project configuration. Job component sections can be collapsed and expanded for easier inspection, and can be navigated to from a menu with section links.
 ![Console Report](./userContent/assets/images/ConsoleReport.png?raw=true "Console Report")
 
 ##Build report
@@ -59,6 +59,6 @@ We are using this utility primarily with freestyle projects that contain complex
 
 Pipeline, multi-configuration and multi-job projects have not been tested.
 The [Cloudbees Folder Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Folders+Plugin) is currently not supported. If your projects are organized using the Cloudbees Folder Plugin Jenkins-JobConfiguration Analyzer is not able to find the project configuration files.
-If you would like to extend the parser, it should be possible to modify the code in [jobConfigParser](./scriptler/scripts/jobConfigParser.groovy) to detect new parameters types and build steps (and these will always be reported in the console).
+If you would like to extend the parser, it should be possible to modify the code in [jobConfigParser](./scriptler/scripts/jobConfigParser.groovy) to detect new parameters types and build steps (these are always reported in the console).
 
 
