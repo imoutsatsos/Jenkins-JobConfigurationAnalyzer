@@ -215,7 +215,7 @@ It can also be an image type if the output is destined for visualization</descri
       <parameters>
         <org.jenkinsci.plugins.scriptler.config.Parameter>
           <name>jobName</name>
-          <value>$JOB_NAME</value>
+          <value>$PROJECT_NAME</value>
         </org.jenkinsci.plugins.scriptler.config.Parameter>
         <org.jenkinsci.plugins.scriptler.config.Parameter>
           <name>fileName</name>
