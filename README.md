@@ -1,12 +1,12 @@
 # Jenkins-JobConfigurationAnalyzer
 A Jenkins utility job for analyzing and reporting the configuration of other freestyle jobs/projects
 
-##Motivation
+## Motivation
 The configuration complexity of Jenkins freestyle jobs has increased, especially as we are now introducing dynamic parameter 
 behavior (using the [Active Choices](https://wiki.jenkins-ci.org/display/JENKINS/Active+Choices+Plugin) and other similar Jenkins plugins).
 There is a need for a quick and concise way to review and access project parameters, builders, publishers, and Groovy code and plugin dependencies.
 
-##What can JOB_CONFIG_ANALYZER do?
+## What can JOB_CONFIG_ANALYZER do?
 This utility Jenkins job allows you to select one of the jobs on your Jenkins server, analyze its configuration, and **create a concise report of the job's main elements** (parameters, scm, builders, publishers, build-wrappers) as well as the Groovy code, scripts and plugin dependencies.
 
 By examining a JOB_CONFIG_ANALYZER build report you can immediately **visualize and access the target project's**:
@@ -32,7 +32,7 @@ The build console output is organized using the [Collapsing Console Sections Plu
 The console report displays a more detailed, textual view of the project configuration. Job component sections can be collapsed and expanded for easier inspection, and can be navigated to from a menu with section links.
 ![Console Report](./userContent/assets/images/ConsoleReport.png?raw=true "Console Report")
 
-##Build report
+## Build report
 The tabular build report uses the [Summary Display Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Summary+Display+Plugin) to display each of the project configuration components in a separate tab.
 This is somewhat similar to the Jenkins v2.+ tabular UI used for job configuration, but in a much more compact form.
 Groovy code (whether embedded or managed in the scriptler catalog) and used in parameters, builders or publishers can be easily inspected and accessed from report links.
@@ -43,7 +43,7 @@ The names and versions of applicable plugins used in parameters, builders and pu
 And here is the parameter report from a project with several dynamic parameters
 ![example Complex Param Report](./userContent/assets/images/ExampleReportComplexParam.png?raw=true "example Complex Param Report")
 
-##Build Artifacts
+## Build Artifacts
 Each build generates a number of archived artifacts as shown in the example below
 ![Build Artifacts](./userContent/assets/images/BuildArtifacts.png?raw=true "Build Artifacts")
 
@@ -56,7 +56,7 @@ The text scripts follow a naming convention `TYPE_SerialID_[parameterName||null]
 
 So, an embedded script used in the 10th job parameter named BUILD_LABEL it is identified by a name like: `parameter_10_BUILD_LABEL_script.txt`
 
-##Limitations
+## Limitations
 It is possible that jobs using configuration components and build steps beyond the ones we have tested may not parse correctly.
 We are using this utility primarily with freestyle projects that contain complex interacting parameters. 
 
