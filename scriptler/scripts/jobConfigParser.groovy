@@ -20,7 +20,8 @@ workspace = vWorkspace
 env = System.getenv()
 JENKINS_HOME = env['JENKINS_HOME']
 JENKINS_URL = jenkins.model.Jenkins.instance.getRootUrl()
-artifactPath="${JENKINS_URL}job/UTIL_CONFIG_PARSER/${buildNumber}/artifact/"
+thisProject=binding.variables['workspace'].replace('\\','/')split('/')[-1]
+artifactPath="${JENKINS_URL}job/${thisProject}/${buildNumber}/artifact/"
 projectPath ="$JENKINS_HOME/jobs/${jobName}/config.xml"
 configList = [] //a list to maintain job element configurations
 scriptletRunLink="${JENKINS_URL}scriptler/runScript?id="
