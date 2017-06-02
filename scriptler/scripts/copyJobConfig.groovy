@@ -12,6 +12,11 @@ def env=System.getenv()
 def JENKINS_HOME=env['JENKINS_HOME']
 def WORKSPACE=workspace
 
+//make destination if not exists
+if (!new File(workspace).exists()){
+ new File(workspace).mkdirs()  
+}
+
 
 jobName=jobName
 println "\nCOPY (to Workspace) config.xml: $jobName\n"

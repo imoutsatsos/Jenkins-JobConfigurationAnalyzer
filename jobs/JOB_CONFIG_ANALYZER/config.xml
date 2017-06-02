@@ -92,7 +92,7 @@ It can also be an image type if the output is destined for visualization</descri
                   <generated>true</generated>
                   <exposedToEnvironment>false</exposedToEnvironment>
                   <value>
-                    <time>1479741345085</time>
+                    <time>1496424896910</time>
                     <timezone>America/New_York</timezone>
                   </value>
                   <checked>false</checked>
@@ -133,7 +133,7 @@ It can also be an image type if the output is destined for visualization</descri
     </com.sonyericsson.rebuild.RebuildSettings>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
-        <org.biouno.unochoice.ChoiceParameter plugin="uno-choice@1.5.2">
+        <org.biouno.unochoice.ChoiceParameter plugin="uno-choice@1.5.3">
           <name>PROJECT_NAME</name>
           <description>&lt;p&gt;Select a Jenkins Project/Job to review</description>
           <randomName>choice-parameter-1249407980061711</randomName>
@@ -142,11 +142,11 @@ It can also be an image type if the output is destined for visualization</descri
             <scriptlerScriptId>displayAllJobs.groovy</scriptlerScriptId>
             <parameters class="linked-hash-map"/>
           </script>
-          <projectName>UTIL_CONFIG_PARSER</projectName>
+          <projectName>JOB_CONFIG_ANALYZER</projectName>
           <choiceType>PT_SINGLE_SELECT</choiceType>
           <filterable>true</filterable>
         </org.biouno.unochoice.ChoiceParameter>
-        <org.biouno.unochoice.DynamicReferenceParameter plugin="uno-choice@1.5.2">
+        <org.biouno.unochoice.DynamicReferenceParameter plugin="uno-choice@1.5.3">
           <name>PROJECT_HISTORY</name>
           <description>&lt;p&gt;A list of previous job configuration reports. &lt;p&gt; By adding a description to the corresponding builds, you can create a concise log of job changes.</description>
           <randomName>choice-parameter-719653105428203</randomName>
@@ -172,7 +172,7 @@ It can also be an image type if the output is destined for visualization</descri
               </entry>
             </parameters>
           </script>
-          <projectName>UTIL_CONFIG_PARSER</projectName>
+          <projectName>JOB_CONFIG_ANALYZER</projectName>
           <parameters class="linked-hash-map"/>
           <referencedParameters>PROJECT_NAME</referencedParameters>
           <choiceType>ET_FORMATTED_HTML</choiceType>
@@ -223,11 +223,11 @@ It can also be an image type if the output is destined for visualization</descri
         </org.jenkinsci.plugins.scriptler.config.Parameter>
         <org.jenkinsci.plugins.scriptler.config.Parameter>
           <name>workspace</name>
-          <value>$WORKSPACE</value>
+          <value>$WORKSPACE/jobs/$PROJECT_NAME</value>
         </org.jenkinsci.plugins.scriptler.config.Parameter>
       </parameters>
     </org.jenkinsci.plugins.scriptler.builder.ScriptlerBuilder>
-    <hudson.plugins.groovy.Groovy plugin="groovy@1.29">
+    <hudson.plugins.groovy.Groovy plugin="groovy@1.30">
       <scriptSource class="hudson.plugins.groovy.FileScriptSource">
         <scriptFile>$JENKINS_HOME/userContent/scripts2/writeXMLProperties_cli.groovy</scriptFile>
       </scriptSource>
@@ -238,10 +238,98 @@ It can also be an image type if the output is destined for visualization</descri
       <javaOpts></javaOpts>
       <classPath></classPath>
     </hudson.plugins.groovy.Groovy>
+    <org.jenkinsci.plugins.scriptler.builder.ScriptlerBuilder plugin="scriptler@2.9">
+      <builderId>1496074857710_2</builderId>
+      <scriptId>copyProjectFiles.groovy</scriptId>
+      <propagateParams>false</propagateParams>
+      <parameters>
+        <org.jenkinsci.plugins.scriptler.config.Parameter>
+          <name>vDestination</name>
+          <value>$WORKSPACE/scriptler/scripts</value>
+        </org.jenkinsci.plugins.scriptler.config.Parameter>
+        <org.jenkinsci.plugins.scriptler.config.Parameter>
+          <name>vPropFilePath</name>
+          <value>$WORKSPACE/buildReportData/paramProps.csv</value>
+        </org.jenkinsci.plugins.scriptler.config.Parameter>
+        <org.jenkinsci.plugins.scriptler.config.Parameter>
+          <name>vArtifactCol</name>
+          <value>4</value>
+        </org.jenkinsci.plugins.scriptler.config.Parameter>
+        <org.jenkinsci.plugins.scriptler.config.Parameter>
+          <name>vArtifactPath</name>
+          <value>$JENKINS_HOME/scriptler/scripts/</value>
+        </org.jenkinsci.plugins.scriptler.config.Parameter>
+      </parameters>
+    </org.jenkinsci.plugins.scriptler.builder.ScriptlerBuilder>
+    <org.jenkinsci.plugins.scriptler.builder.ScriptlerBuilder plugin="scriptler@2.9">
+      <builderId>1496082198147_1</builderId>
+      <scriptId>copyProjectFiles.groovy</scriptId>
+      <propagateParams>false</propagateParams>
+      <parameters>
+        <org.jenkinsci.plugins.scriptler.config.Parameter>
+          <name>vDestination</name>
+          <value>$WORKSPACE/scriptler/scripts</value>
+        </org.jenkinsci.plugins.scriptler.config.Parameter>
+        <org.jenkinsci.plugins.scriptler.config.Parameter>
+          <name>vPropFilePath</name>
+          <value>$WORKSPACE/buildReportData/builderProps.csv</value>
+        </org.jenkinsci.plugins.scriptler.config.Parameter>
+        <org.jenkinsci.plugins.scriptler.config.Parameter>
+          <name>vArtifactCol</name>
+          <value>3</value>
+        </org.jenkinsci.plugins.scriptler.config.Parameter>
+        <org.jenkinsci.plugins.scriptler.config.Parameter>
+          <name>vArtifactPath</name>
+          <value>$JENKINS_HOME/scriptler/scripts/</value>
+        </org.jenkinsci.plugins.scriptler.config.Parameter>
+      </parameters>
+    </org.jenkinsci.plugins.scriptler.builder.ScriptlerBuilder>
+    <org.jenkinsci.plugins.scriptler.builder.ScriptlerBuilder plugin="scriptler@2.9">
+      <builderId>1496084733490_3</builderId>
+      <scriptId>copyProjectFiles.groovy</scriptId>
+      <propagateParams>false</propagateParams>
+      <parameters>
+        <org.jenkinsci.plugins.scriptler.config.Parameter>
+          <name>vDestination</name>
+          <value>$WORKSPACE/externalScripts</value>
+        </org.jenkinsci.plugins.scriptler.config.Parameter>
+        <org.jenkinsci.plugins.scriptler.config.Parameter>
+          <name>vPropFilePath</name>
+          <value>$WORKSPACE/buildReportData/builderProps.csv</value>
+        </org.jenkinsci.plugins.scriptler.config.Parameter>
+        <org.jenkinsci.plugins.scriptler.config.Parameter>
+          <name>vArtifactCol</name>
+          <value>4</value>
+        </org.jenkinsci.plugins.scriptler.config.Parameter>
+        <org.jenkinsci.plugins.scriptler.config.Parameter>
+          <name>vArtifactPath</name>
+          <value></value>
+        </org.jenkinsci.plugins.scriptler.config.Parameter>
+      </parameters>
+    </org.jenkinsci.plugins.scriptler.builder.ScriptlerBuilder>
+    <org.jenkinsci.plugins.scriptler.builder.ScriptlerBuilder plugin="scriptler@2.9">
+      <builderId>1496161449245_13</builderId>
+      <scriptId>copyFolders.groovy</scriptId>
+      <propagateParams>false</propagateParams>
+      <parameters>
+        <org.jenkinsci.plugins.scriptler.config.Parameter>
+          <name>vDestination</name>
+          <value>$WORKSPACE/jobs/$PROJECT_NAME</value>
+        </org.jenkinsci.plugins.scriptler.config.Parameter>
+        <org.jenkinsci.plugins.scriptler.config.Parameter>
+          <name>vParent</name>
+          <value>$JENKINS_HOME/jobs/$PROJECT_NAME</value>
+        </org.jenkinsci.plugins.scriptler.config.Parameter>
+        <org.jenkinsci.plugins.scriptler.config.Parameter>
+          <name>vFolder2Copy</name>
+          <value>buildProps,buildScripts</value>
+        </org.jenkinsci.plugins.scriptler.config.Parameter>
+      </parameters>
+    </org.jenkinsci.plugins.scriptler.builder.ScriptlerBuilder>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>*.*</artifacts>
+      <artifacts>*.*, jobs/$PROJECT_NAME/*.*, scriptler/scripts/*.*,externalScripts/*.*,buildReportData/*.*,embeddedScripts/*.*,jobs/$PROJECT_NAME/buildProps/*.*,jobs/$PROJECT_NAME/buildScripts/*.*</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
       <fingerprint>false</fingerprint>

@@ -16,6 +16,17 @@ You just need to use the generated Section Start/End keywords in the plugin.
 jobName = vJobName
 buildNumber=vBuildNumber
 workspace = vWorkspace
+scriptWorkspace="$workspace/embeddedScripts"
+reportWorkspace="$workspace/buildReportData"
+
+//make destination if not exists
+if (!new File(workspace).exists()){
+ new File(workspace).mkdirs()  
+}
+
+//create required build folders
+new File(scriptWorkspace).mkdir() 
+new File(reportWorkspace).mkdir() 
 
 env = System.getenv()
 JENKINS_HOME = env['JENKINS_HOME']
@@ -85,7 +96,7 @@ project.properties.'hudson.model.ParametersDefinitionProperty'[0].'parameterDefi
     visit(it, elementConfiguration)
 
 } //end parameters
-paramFile = new File("$workspace/paramProps.csv")
+paramFile = new File("$reportWorkspace/paramProps.csv")
 paramFile << 'SERIAL_ID,NAME,TYPE,SCRIPTLET,SCRIPTLET_LINK,CODE_LINK,REFERENCED_PARAMS,CLASS,PLUGIN\n'
 configList.each {
     if (it.elementType == 'parameter') {
@@ -120,7 +131,7 @@ project.builders[0].children().each {
     elementConfiguration.put('type', builderType)
     visit(it, elementConfiguration)
 }// end project builder
-buildFile = new File("$workspace/builderProps.csv")
+buildFile = new File("$reportWorkspace/builderProps.csv")
 buildFile << 'SERIAL_ID,TYPE,SCRIPT_ID,CODE_LINK,CLASS,PLUGIN\n'
 configList.each {
 //    println it
@@ -161,7 +172,7 @@ project.publishers[0].children().each{
     elementConfiguration.put('type', publisherType)
     visit(it, elementConfiguration)
 }// end project builder
-pubFile = new File("$workspace/publisherProps.csv")
+pubFile = new File("$reportWorkspace/publisherProps.csv")
 pubFile << 'SERIAL_ID,TYPE,CLASS,PLUGIN\n'
 configList.each {
 //    println it
@@ -197,7 +208,7 @@ project.buildWrappers[0].children().each{
     elementConfiguration.put('type', wrapperType)
     visit(it, elementConfiguration)
 }// end project builder
-wrapFile = new File("$workspace/wrapperProps.csv")
+wrapFile = new File("$reportWorkspace/wrapperProps.csv")
 wrapFile << 'SERIAL_ID,TYPE,CLASS,PLUGIN\n'
 configList.each {
 //    println it
@@ -230,7 +241,7 @@ def visit(Node node, HashMap elementConfiguration) {
                         if (it.name() in ['script','command']){
                             scriptFileName="${elementConfiguration.elementType}_${elementConfiguration.serialId}_${elementConfiguration.name}_${it.name()}.txt"
                             elementConfiguration.put('scriptCode',"$artifactPath$scriptFileName/*view*/")
-                            scriptFile = new File("$workspace/${scriptFileName}")
+                            scriptFile = new File("$scriptWorkspace/${scriptFileName}")
                             scriptFile << it.text()
                         }
 
