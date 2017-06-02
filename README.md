@@ -45,7 +45,7 @@ And here is the parameter report from a project with several dynamic parameters
 
 ## Build Artifacts
 Each build generates a number of archived artifacts as shown in the example below
-![Build Artifacts](https://docs.google.com/drawings/d/1Gj9NMppm_3ElLFXQVX-LPQzNEHDkzCxDDWJbeuoKkmU/pub?w=426&h=400)
+![Build Artifacts](https://docs.google.com/drawings/d/1Gj9NMppm_3ElLFXQVX-LPQzNEHDkzCxDDWJbeuoKkmU/pub?w=639&h=600)
 
 Archived artifacts are organized in **folders some of which reflect the typical layout of a Jenkins installation**. This makes it easier to package the job and as many of its dependencies for export to another server:
 
