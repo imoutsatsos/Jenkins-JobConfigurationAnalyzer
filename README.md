@@ -45,12 +45,15 @@ And here is the parameter report from a project with several dynamic parameters
 
 ## Build Artifacts
 Each build generates a number of archived artifacts as shown in the example below
-![Build Artifacts](./userContent/assets/images/BuildArtifacts.png?raw=true "Build Artifacts")
+![Build Artifacts](https://docs.google.com/drawings/d/1Gj9NMppm_3ElLFXQVX-LPQzNEHDkzCxDDWJbeuoKkmU/pub?w=426&h=400)
 
-Archived artifacts include:
+Archived artifacts are organized in **folders some of which reflect the typical layout of a Jenkins installation**. This makes it easier to package the job and as many of its dependencies for export to another server:
 
-1. the `config.xml` file of the analyzed project
-2. text files corresponding to embedded scripts (Groovy or command line script) in each of the project component
+1. Folder `buildReportData` contains required data files for generating the tabbed build report
+2. Folder `embeddedScripts` contains text files corresponding to embedded scripts (Groovy or command line script) in each of the project component. See naming convention for these scripts below.
+3. Folder `externalScripts` contains external Groovy scripts used in build and post build steps
+4. Folder `jobs/JOB_NAME` contains a copy of the `config.xml` file of the analyzed project.
+5. Folder `scriptler/scripts` contains the script dependencies of the project. These include scriptlets used for Active Choice and other parameters, and build and post build steps.
 
 The text scripts follow a naming convention `TYPE_SerialID_[parameterName||null]_script.txt` where file names use a *prefix indicating the component type where the script originated* (parameter, builder, publisher etc.) and it's *serial ID* (the sequence number by which the component is ordered in the configuration file). If the component is a parameter, the *parameter name is also included in the prefix*.
 
