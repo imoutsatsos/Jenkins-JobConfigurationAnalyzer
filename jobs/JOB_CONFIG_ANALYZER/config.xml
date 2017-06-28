@@ -92,7 +92,7 @@ It can also be an image type if the output is destined for visualization</descri
                   <generated>true</generated>
                   <exposedToEnvironment>false</exposedToEnvironment>
                   <value>
-                    <time>1496424896910</time>
+                    <time>1498676724210</time>
                     <timezone>America/New_York</timezone>
                   </value>
                   <checked>false</checked>
@@ -229,7 +229,7 @@ It can also be an image type if the output is destined for visualization</descri
     </org.jenkinsci.plugins.scriptler.builder.ScriptlerBuilder>
     <hudson.plugins.groovy.Groovy plugin="groovy@1.30">
       <scriptSource class="hudson.plugins.groovy.FileScriptSource">
-        <scriptFile>$JENKINS_HOME/userContent/scripts2/writeXMLProperties_cli.groovy</scriptFile>
+        <scriptFile>$JENKINS_HOME/jobScripts/groovyBuilders/writeXMLProperties_cli.groovy</scriptFile>
       </scriptSource>
       <groovyName>jenkinsGroovy</groovyName>
       <parameters></parameters>

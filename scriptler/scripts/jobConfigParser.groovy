@@ -240,7 +240,7 @@ def visit(Node node, HashMap elementConfiguration) {
                         println "\t\t ${it.name()}"//usually scripts, commands and descriptions
                         if (it.name() in ['script','command']){
                             scriptFileName="${elementConfiguration.elementType}_${elementConfiguration.serialId}_${elementConfiguration.name}_${it.name()}.txt"
-                            elementConfiguration.put('scriptCode',"$artifactPath$scriptFileName/*view*/")
+                          elementConfiguration.put('scriptCode',"${artifactPath}embeddedScripts/$scriptFileName/*view*/")
                             scriptFile = new File("$scriptWorkspace/${scriptFileName}")
                             scriptFile << it.text()
                         }
